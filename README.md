@@ -47,7 +47,7 @@ Luego de la configuración del proyecto se deben seguir las siguientes instrucci
 
 - Activar el entorno virtual en la consola dentro de la carpeta del proyecto, ejecutando el siguiente comando: pipenv shell
 - Crear las migraciones a la base de datos, ejecutando los siguientes comandos:
-    - Debe dirigirse en la terminal a la carpeta de contenga el archivo manage.py, luego ejecuta:
+    - Debe dirigirse en la terminal a la carpeta que contenga el archivo manage.py, luego ejecuta:
         - python [manage.py](http://manage.py) makemigrations api
         - python [manage.py](http://manage.py) migrate
     - Luego debe ejecutar el comando que leerá la información de la API de Vtex, para ello ya debes tener las variables de entorno necesarias para el API de Vtex (TOKEN, URL_ORDERS, URL_ORDER) configuradas y tener acceso a la API:
