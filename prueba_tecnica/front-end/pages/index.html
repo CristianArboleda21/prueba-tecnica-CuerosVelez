@@ -3,44 +3,59 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Inicio</title>
+  <title>Opciones</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
-      text-align: center;
-      padding: 50px;
+      background-color: #f7f7f7;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem;
     }
+
     h1 {
       color: #333;
+      margin-bottom: 2rem;
     }
-    .button-container {
+
+    .options {
       display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin-top: 3rem;
+      flex-direction: column;
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 400px;
+      align-items: center;
     }
-    .btn {
-      background-color: #007bff;
-      color: white;
-      padding: 1rem 2rem;
-      border: none;
-      border-radius: 8px;
-      font-size: 1.1rem;
+
+    .option-button {
+      display: inline-block;
+      border-radius: 4px;
       cursor: pointer;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1em;
       text-decoration: none;
-      transition: background-color 0.3s ease;
+      transition: background 0.2s;
+      min-width: 220px;
+      text-align: center;
+      margin-bottom: 0.5rem;
     }
-    .btn:hover {
-      background-color: #0056b3;
+    .option-button:hover {
+      background: #45a049;
     }
   </style>
 </head>
 <body>
-  <h1>Selecciona una API</h1>
-  <div class="button-container">
-    <a class="btn" href="../orders/vtex/vtex_api.html">API VTEX</a>
-    <a class="btn" href="../pages/api.html">API Datos almacenados</a>
+
+  <h1>Selecciona una opción</h1>
+
+  <div class="options"> 
+    <a class="option-button" href="../orders/vtex/vtex_api.html">API VTEX</a>
+    <a class="option-button" href="../pages/api.html">API Datos almacenados</a>
   </div>
+
 </body>
 </html>

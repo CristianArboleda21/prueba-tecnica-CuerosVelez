@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Bodegas por Ciudad</title>
+    <title>Productos por Bodega y Compañía de Entrega</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -66,19 +66,19 @@
 </head>
 <body>
     <div class="container">
-        <h1>¿Desde qué almacenes se realizan envíos hacia una ciudad específica?</h1>
-        <button onclick="fetchWarehousesCity()">Cargar Datos</button>
-        <button onclick="showWarehousesChart()">Ver Gráfica Bodegas por Ciudad</button>
+        <h1>¿Qué productos específicos están saliendo de cada uno de nuestros almacenes (bodegas)?</h1>
+        <button onclick="fetchSpecificProducts()">Cargar Datos</button>
+        <button onclick="showSpecificProductsChart()">Ver Gráfica Productos por Bodega</button>
         <div id="chartContainer" style="display:none; text-align:center; margin-bottom:20px;">
-            <img id="chartImg" src="" alt="Gráfica bodegas por ciudad" style="max-width:100%;">
+            <img id="chartImg" src="" alt="Gráfica productos por bodega" style="max-width:100%;">
         </div>
         <div id="tablesContainer"></div>
     </div>
     <script>
-        const API_URL = 'http://localhost:8000/api/warehouses/warehouses_city/';
-        const CHART_URL = 'http://localhost:8000/api/warehouses/warehouses_city_chart/';
+        const API_URL = 'http://localhost:8000/api/products/specific_products/';
+        const CHART_URL = 'http://localhost:8000/api/products/specific_products_chart/';
 
-        async function fetchWarehousesCity() {
+        async function fetchSpecificProducts() {
             const container = document.getElementById('tablesContainer');
             const chartDiv = document.getElementById('chartContainer');
             chartDiv.style.display = 'none';
@@ -98,22 +98,23 @@
                 }
 
                 data.forEach(entry => {
-                    const ciudad = entry.ciudad;
-                    const bodegas = entry.bodegas;
+                    const bodega = entry.bodega;
+                    const compania = entry['compañia de entrega'];
+                    const productos = entry.productos;
 
                     const table = document.createElement('table');
                     const caption = document.createElement('caption');
-                    caption.textContent = `Ciudad: ${ciudad}`;
+                    caption.textContent = `Bodega: ${bodega} | Compañía de entrega: ${compania}`;
                     table.appendChild(caption);
 
                     const thead = document.createElement('thead');
-                    thead.innerHTML = '<tr><th>Almacen</th></tr>';
+                    thead.innerHTML = '<tr><th>Producto</th><th>Cantidad</th></tr>';
                     table.appendChild(thead);
 
                     const tbody = document.createElement('tbody');
-                    bodegas.forEach(b => {
+                    productos.forEach(p => {
                         const row = document.createElement('tr');
-                        row.innerHTML = `<td>${b.bodega}</td>`;
+                        row.innerHTML = `<td>${p.nombre}</td><td>${p.cantidad}</td>`;
                         tbody.appendChild(row);
                     });
 
@@ -122,12 +123,12 @@
                 });
 
             } catch (err) {
-                container.innerHTML = '<div class="error">Error al obtener la información de bodegas por ciudad</div>';
+                container.innerHTML = '<div class="error">Error al obtener la información de productos</div>';
                 console.error(err);
             }
         }
 
-        function showWarehousesChart() {
+        function showSpecificProductsChart() {
             document.getElementById('tablesContainer').innerHTML = '';
             const chartDiv = document.getElementById('chartContainer');
             chartDiv.style.display = 'block';

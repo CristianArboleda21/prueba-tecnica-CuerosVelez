@@ -1,10 +1,18 @@
+from django.http import HttpResponse
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework import viewsets
 from rest_framework import status
 from .utils import api_vtx
 from .serializers import *
+from io import BytesIO
 from .models import *
+
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+from matplotlib.ticker import MaxNLocator
+
 
 import pandas as pd
 import os
@@ -130,16 +138,17 @@ class ProductsViewSet(viewsets.ModelViewSet):
             warehouse = detail.order.origin_id.sla
             delivery_company = detail.order.origin_id.delivery_company
             product = detail.product_id.name
+            quantity = detail.quantity
             data.append({
                 'bodega': warehouse,
                 'compañia de entrega': delivery_company,
                 'producto': product,
-                'cantidad': detail.quantity
+                'cantidad': quantity
             })
 
         # print(details)
         df = pd.DataFrame(data)
-        resumen = df.groupby(['bodega','producto','compañia de entrega']).size().reset_index(name='cantidad')
+        resumen = df.groupby(['bodega','producto','compañia de entrega'])['cantidad'].sum().reset_index()
         # result = resumen.to_dict(orient='records')
 
         result = []
@@ -158,6 +167,51 @@ class ProductsViewSet(viewsets.ModelViewSet):
         return Response(result, status=status.HTTP_200_OK)
     
     @action(detail=False, methods=["GET"])
+    def specific_products_chart(self, request, pk=None): 
+        try:
+            details = DetailsOrder.objects.select_related(
+                'order', 'product_id', 'order__origin_id').all()
+            data = []
+            for detail in details:
+                warehouse = detail.order.origin_id.sla
+                delivery_company = detail.order.origin_id.delivery_company
+                product = detail.product_id.name
+                quantity = detail.quantity
+                data.append({
+                    'bodega': warehouse,
+                    'compañia de entrega': delivery_company,
+                    'producto': product,
+                    'cantidad': quantity
+                })
+
+            df = pd.DataFrame(data)
+            resumen = df.groupby(['bodega','producto','compañia de entrega'])['cantidad'].sum().reset_index()
+
+
+            # Etiquetas: "Producto (Bodega - Compañía)"
+            resumen['etiqueta'] = resumen.apply(
+                lambda row: f"{row['producto']} ({row['bodega']})", axis=1)
+            etiquetas = resumen['etiqueta'].tolist()
+            cantidades = resumen['cantidad'].tolist()
+
+            fig, ax = plt.subplots(figsize=(12, 6))
+            ax.barh(etiquetas, cantidades, color='mediumslateblue')
+            ax.set_xlabel('Cantidad')
+            ax.set_ylabel('Producto (Bodega)')
+            ax.set_title('Cantidad de productos por bodega')
+            ax.xaxis.set_major_locator(MaxNLocator(integer=True))
+            plt.tight_layout()
+
+            buf = BytesIO()
+            plt.savefig(buf, format='png')
+            plt.close(fig)
+            buf.seek(0)
+            return HttpResponse(buf.getvalue(), content_type='image/png')
+
+        except Exception as e:
+            return HttpResponse(f"Error al generar la gráfica: {e}", status=500)
+        
+    @action(detail=False, methods=["GET"])
     def city_destination_products(self, request, pk=None):
         
         details = DetailsOrder.objects.select_related(
@@ -174,7 +228,7 @@ class ProductsViewSet(viewsets.ModelViewSet):
             })
 
         df = pd.DataFrame(data)
-        resumen = df.groupby(['ciudad','producto']).size().reset_index(name='cantidad')
+        resumen = df.groupby(['ciudad','producto'])['cantidad'].sum().reset_index()
 
         result = []
         for producto, grupo in resumen.groupby('producto'):
@@ -188,6 +242,56 @@ class ProductsViewSet(viewsets.ModelViewSet):
             })
 
         return Response(result, status=status.HTTP_200_OK)
+    
+    @action(detail=False, methods=["GET"])
+    def city_destination_products_chart(self, request, pk=None):
+        try:
+            details = DetailsOrder.objects.select_related(
+                'order', 'product_id', 'order__origin_id').all()
+            data = []
+
+            for detail in details:
+                city = detail.order.destination_id.city
+                product = detail.product_id.name
+                quantity = detail.quantity
+                data.append({
+                    'ciudad': city,
+                    'producto': product,
+                    'cantidad': quantity
+                })
+
+            import pandas as pd
+            import matplotlib.pyplot as plt
+            from matplotlib.ticker import MaxNLocator
+
+            df = pd.DataFrame(data)
+            # Agrupa y suma la cantidad real de productos por ciudad
+            resumen = df.groupby(['producto', 'ciudad'])['cantidad'].sum().reset_index()
+
+            # Ordena por producto y ciudad
+            resumen = resumen.sort_values(by=['producto', 'ciudad'])
+
+            # Etiquetas: "Producto (Ciudad)"
+            resumen['etiqueta'] = resumen.apply(lambda row: f"{row['producto']} ({row['ciudad']})", axis=1)
+            etiquetas = resumen['etiqueta'].tolist()
+            cantidades = resumen['cantidad'].tolist()
+
+            fig, ax = plt.subplots(figsize=(12, 6))
+            ax.barh(etiquetas, cantidades, color='coral')
+            ax.set_xlabel('Cantidad')
+            ax.set_ylabel('Producto (Ciudad)')
+            ax.set_title('Cantidad de cada producto enviado a cada ciudad')
+            ax.xaxis.set_major_locator(MaxNLocator(integer=True))
+            plt.tight_layout()
+
+            buf = BytesIO()
+            plt.savefig(buf, format='png')
+            plt.close(fig)
+            buf.seek(0)
+            return HttpResponse(buf.getvalue(), content_type='image/png')
+
+        except Exception as e:
+            return HttpResponse(f"Error al generar la gráfica: {e}", status=500)
 
 class WarehousesViewSet(viewsets.ModelViewSet):
     queryset = Warehouses.objects.all().order_by('id')
@@ -226,5 +330,48 @@ class WarehousesViewSet(viewsets.ModelViewSet):
             return Response(result, status=status.HTTP_200_OK)
         
         except Exception as e:
-            return Response({"error": f"Error al obtener la infomación de las ordenes: {e}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        
+            return Response({"error": f"Error al obtener la infomación de las bodegas: {e}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+    @action(detail=False, methods=["GET"])
+    def warehouses_city_chart(self, request, pk=None):
+        try:
+            details = DetailsOrder.objects.select_related(
+                'order', 'product_id', 'order__origin_id').all()
+            
+            data = []
+            for detail in details:
+                city = detail.order.destination_id.city
+                warehouse = detail.order.origin_id.sla
+                data.append({
+                    'ciudad': city,
+                    'bodega': warehouse,
+                    'cantidad': detail.quantity
+                })
+
+            df = pd.DataFrame(data)
+            resumen = df.groupby(['ciudad', 'bodega']).size().reset_index(name='cantidad')
+
+            # Ordena por bodega y ciudad alfabéticamente
+            resumen = resumen.sort_values(by=['bodega', 'ciudad'])
+
+            # Etiquetas: "Bodega (Ciudad)"
+            resumen['etiqueta'] = resumen.apply(lambda row: f"{row['bodega']} ({row['ciudad']})", axis=1)
+            etiquetas = resumen['etiqueta'].tolist()
+            cantidades = resumen['cantidad'].tolist()
+
+            fig, ax = plt.subplots(figsize=(10, 6))
+            ax.barh(etiquetas, cantidades, color='skyblue')
+            ax.set_xlabel('Cantidad')
+            ax.set_ylabel('Bodega (Ciudad)')
+            ax.set_title('Envios de almacenes a cada ciudad')
+            ax.xaxis.set_major_locator(MaxNLocator(integer=True))
+            plt.tight_layout()
+
+            buf = BytesIO()
+            plt.savefig(buf, format='png')
+            plt.close(fig)
+            buf.seek(0)
+            return HttpResponse(buf.getvalue(), content_type='image/png')
+
+        except Exception as e:
+            return Response(f"Error al generar la gráfica: {e}", status=status.HTTP_500_INTERNAL_SERVER_ERROR)

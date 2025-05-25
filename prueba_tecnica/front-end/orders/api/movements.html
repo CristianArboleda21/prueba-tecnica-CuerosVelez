@@ -20,12 +20,19 @@
         .close { color: #aaa; position: absolute; top: 10px; right: 20px; font-size: 28px; font-weight: bold; cursor: pointer; }
         .close:hover { color: #333; }
         ul { padding-left: 20px; }
+        .filters { margin-bottom: 20px; text-align: center; }
+        .filters label { margin: 0 10px; }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Movimientos de Órdenes</h1>
-        <button onclick="fetchMovements()">Cargar Movimientos</button>
+        <div class="filters">
+            <label>Fecha inicio: <input type="date" id="startDate"></label>
+            <label>Fecha fin: <input type="date" id="endDate"></label>
+            <button onclick="fetchMovements()">Filtrar</button>
+            <button onclick="clearFilters()">Limpiar Filtros</button>
+        </div>
         <div id="movementsContainer"></div>
     </div>
 
@@ -43,8 +50,20 @@
         async function fetchMovements() {
             const container = document.getElementById('movementsContainer');
             container.innerHTML = '<div class="loading">Cargando movimientos...</div>';
+
+            // Obtén los valores de los inputs
+            const startDate = document.getElementById('startDate')?.value;
+            const endDate = document.getElementById('endDate')?.value;
+
+            // Construye la URL con los parámetros si existen
+            let url = `${API_URL}/movements/`;
+            const params = [];
+            if (startDate) params.push(`start_date=${startDate}`);
+            if (endDate) params.push(`end_date=${endDate}`);
+            if (params.length) url += '?' + params.join('&');
+
             try {
-                const res = await fetch(`${API_URL}/movements/`);
+                const res = await fetch(url);
                 if (!res.ok) {
                     const text = await res.text();
                     throw new Error(text);
@@ -93,6 +112,12 @@
             }
         }
 
+        function clearFilters() {
+            document.getElementById('startDate').value = '';
+            document.getElementById('endDate').value = '';
+            fetchMovements();
+        }
+
         async function getOrderDetail(id) {
             try {
                 const res = await fetch(`${API_URL}/${id}/detail_order/`);
@@ -133,6 +158,9 @@
                 closeModal();
             }
         }
+
+        // Cargar movimientos al inicio
+        document.addEventListener('DOMContentLoaded', fetchMovements);
     </script>
 </body>
 </html>

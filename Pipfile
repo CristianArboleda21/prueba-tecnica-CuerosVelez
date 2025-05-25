@@ -12,6 +12,7 @@ requests = "*"
 pandas = "*"
 numpy = "*"
 django-cors-headers = "*"
+matplotlib = "*"
 
 [dev-packages]
 
