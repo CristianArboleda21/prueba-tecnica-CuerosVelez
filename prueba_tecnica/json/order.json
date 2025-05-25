@@ -1,0 +1,717 @@
+{
+    "orderId": "1407433233021-01",
+    "sequence": "3233021",
+    "marketplaceOrderId": "",
+    "marketplaceServicesEndpoint": "http://oms.vtexinternal.com.br/api/oms?an=cuerosvelezco",
+    "sellerOrderId": "00-1407433233021-01",
+    "origin": "Marketplace",
+    "affiliateId": "",
+    "salesChannel": "1",
+    "merchantName": null,
+    "status": "invoiced",
+    "workflowIsInError": false,
+    "statusDescription": "Faturado",
+    "value": 11646700,
+    "creationDate": "2024-01-31T23:25:05.0995122+00:00",
+    "lastChange": "2024-01-31T23:38:58.9899633+00:00",
+    "orderGroup": "1407433233021",
+    "followUpEmail": "6369c0198743420cb0ca4e7dcb3d856f@ct.vtex.com.br",
+    "lastMessage": null,
+    "hostname": "cuerosvelezco",
+    "isCompleted": true,
+    "roundingError": 0,
+    "orderFormId": "aaf18a4bc39e4323b9f8611ca704d294",
+    "allowCancellation": false,
+    "allowEdition": false,
+    "isCheckedIn": false,
+    "authorizedDate": "2024-01-31T23:25:12.2131074+00:00",
+    "invoicedDate": "2024-01-31T23:38:58.9898816+00:00",
+    "cancelReason": null,
+    "checkedInPickupPointId": null,
+    "totals": [
+        {
+            "id": "Items",
+            "name": "Total de los items",
+            "value": 15990000
+        },
+        {
+            "id": "Discounts",
+            "name": "Total de descuentos",
+            "value": -4797000
+        },
+        {
+            "id": "Shipping",
+            "name": "Costo total del envío",
+            "value": 453700
+        },
+        {
+            "id": "Tax",
+            "name": "Costo total del cambio",
+            "value": 0
+        }
+    ],
+    "sellers": [
+        {
+            "id": "1",
+            "name": "VÉLEZ",
+            "logo": "",
+            "fulfillmentEndpoint": "http://fulfillment.vtexcommerce.com.br/api/fulfillment?an=cuerosvelezco"
+        }
+    ],
+    "clientPreferencesData": {
+        "locale": "es-CO",
+        "optinNewsLetter": false
+    },
+    "cancellationData": null,
+    "taxData": null,
+    "subscriptionData": null,
+    "itemMetadata": {
+        "Items": [
+            {
+                "Id": "781",
+                "Seller": "1",
+                "Name": "Billetera de cuero Creta vertical Cafe",
+                "SkuName": "Billetera de cuero Creta vertical Cafe",
+                "ProductId": "175",
+                "RefId": "101963511",
+                "Ean": "7706352150136",
+                "ImageUrl": "http://cuerosvelezco.vteximg.com.br/arquivos/ids/218755-450-675/1019635-11-01-billetera-de-cuero.jpg?v=637648103376400000",
+                "DetailUrl": "/billetera-1019635-11/p",
+                "AssemblyOptions": []
+            }
+        ]
+    },
+    "marketplace": {
+        "baseURL": "http://oms.vtexinternal.com.br/api/oms?an=cuerosvelezco",
+        "isCertified": null,
+        "name": "cuerosvelezco"
+    },
+    "storePreferencesData": {
+        "countryCode": "COL",
+        "currencyCode": "COP",
+        "currencyFormatInfo": {
+            "CurrencyDecimalDigits": 2,
+            "CurrencyDecimalSeparator": ",",
+            "CurrencyGroupSeparator": ".",
+            "CurrencyGroupSize": 3,
+            "StartsWithCurrencySymbol": true
+        },
+        "currencyLocale": 9226,
+        "currencySymbol": "$",
+        "timeZone": "SA Pacific Standard Time"
+    },
+    "customData": null,
+    "commercialConditionData": null,
+    "openTextField": null,
+    "invoiceData": {
+        "userPaymentInfo": null,
+        "address": null,
+        "invoiceSubject": null
+    },
+    "changesAttachment": null,
+    "callCenterOperatorData": null,
+    "packageAttachment": {
+        "packages": [
+            {
+                "items": [
+                    {
+                        "itemIndex": 0,
+                        "quantity": 1,
+                        "price": 11193000,
+                        "description": "Billetera de cuero Creta vertical Cafe",
+                        "unitMultiplier": 0.0
+                    }
+                ],
+                "courier": null,
+                "invoiceNumber": "275E 10446",
+                "description": null,
+                "invoiceValue": 11646700,
+                "invoiceUrl": null,
+                "issuanceDate": "2024-01-31T00:00:00.0000000+00:00",
+                "trackingNumber": "77660308476",
+                "invoiceKey": null,
+                "trackingUrl": "https://www.coordinadora.com/portafolio-de-servicios/servicios-en-linea/rastrear-guias/",
+                "embeddedInvoice": "",
+                "type": "Output",
+                "courierStatus": null,
+                "cfop": null,
+                "restitutions": {},
+                "volumes": null,
+                "EnableInferItems": null
+            }
+        ]
+    },
+    "paymentData": {
+        "transactions": [
+            {
+                "isActive": true,
+                "transactionId": "1457B27EF7D448FDA34A5713F8DB43A7",
+                "merchantName": "CUEROSVELEZCO",
+                "payments": [
+                    {
+                        "id": "31195E4177554AE49FB4698524DB0C7C",
+                        "paymentSystem": "2",
+                        "paymentSystemName": "Visa",
+                        "value": 11646700,
+                        "installments": 3,
+                        "referenceValue": 11646700,
+                        "cardHolder": null,
+                        "cardNumber": null,
+                        "firstDigits": "489444",
+                        "lastDigits": "0828",
+                        "cvv2": null,
+                        "expireMonth": null,
+                        "expireYear": null,
+                        "url": null,
+                        "giftCardId": null,
+                        "giftCardName": null,
+                        "giftCardCaption": null,
+                        "redemptionCode": null,
+                        "group": "creditCard",
+                        "tid": "71573324482",
+                        "dueDate": null,
+                        "connectorResponses": {
+                            "acquirer": "MercadoPagoV2",
+                            "Message": "accredited",
+                            "Tid": "71573324482",
+                            "authId": "71573324482",
+                            "ReturnCode": null,
+                            "nsu": "71573324482"
+                        },
+                        "giftCardProvider": null,
+                        "giftCardAsDiscount": null,
+                        "koinUrl": null,
+                        "accountId": "932FDBD95B4748F29C3A7F33C4F13D25",
+                        "parentAccountId": null,
+                        "bankIssuedInvoiceIdentificationNumber": null,
+                        "bankIssuedInvoiceIdentificationNumberFormatted": null,
+                        "bankIssuedInvoiceBarCodeNumber": null,
+                        "bankIssuedInvoiceBarCodeType": null,
+                        "billingAddress": {
+                            "postalCode": "11001",
+                            "city": "Bogotá, D.c.",
+                            "state": "Bogotá, D.C.",
+                            "country": "COL",
+                            "street": "CALLE 67B SUR #13-60",
+                            "number": null,
+                            "neighborhood": "Portal Usme",
+                            "complement": "TORRE 4 APTO 901",
+                            "reference": null,
+                            "geoCoordinates": [
+                                -74.07209014892578,
+                                4.710988521575928
+                            ]
+                        },
+                        "paymentOrigin": null
+                    }
+                ]
+            }
+        ],
+        "giftCards": []
+    },
+    "shippingData": {
+        "id": "shippingData",
+        "address": {
+            "addressType": "residential",
+            "receiverName": "JOHANNA MURILLO FORERO",
+            "addressId": "8533716239475",
+            "versionId": null,
+            "entityId": null,
+            "postalCode": "11001",
+            "city": "Bogotá, D.c.",
+            "state": "Bogotá, D.C.",
+            "country": "COL",
+            "street": "CALLE 67B SUR #13-60",
+            "number": null,
+            "neighborhood": "Portal Usme",
+            "complement": "TORRE 4 APTO 901",
+            "reference": null,
+            "geoCoordinates": [
+                -74.07209014892578,
+                4.710988521575928
+            ]
+        },
+        "logisticsInfo": [
+            {
+                "itemIndex": 0,
+                "itemId": "781",
+                "selectedSla": "VZ ZONA 1",
+                "selectedDeliveryChannel": "delivery",
+                "lockTTL": "12d",
+                "price": 453700,
+                "listPrice": 453700,
+                "sellingPrice": 453700,
+                "deliveryWindow": null,
+                "deliveryCompany": "Zona_Bogota",
+                "shippingEstimate": "3bd",
+                "shippingEstimateDate": "2024-02-05T23:25:06.4163070+00:00",
+                "slas": [
+                    {
+                        "id": "VZ ZONA 1",
+                        "name": "VZ ZONA 1",
+                        "shippingEstimate": "3bd",
+                        "deliveryWindow": null,
+                        "availableDeliveryWindows": [],
+                        "price": 453700,
+                        "listPrice": 453700,
+                        "deliveryChannel": "delivery",
+                        "pickupStoreInfo": {
+                            "additionalInfo": null,
+                            "address": null,
+                            "dockId": null,
+                            "friendlyName": null,
+                            "isPickupStore": false
+                        },
+                        "polygonName": "",
+                        "lockTTL": "12d",
+                        "pickupPointId": null,
+                        "transitTime": "1bd",
+                        "pickupDistance": 0.0,
+                        "deliveryIds": [
+                            {
+                                "courierId": "Zona_Bogota",
+                                "courierName": "Zona_Bogota",
+                                "dockId": "5275_AQUAIBAGUE",
+                                "quantity": 1,
+                                "warehouseId": "5275_AQUAIBAGUE",
+                                "accountCarrierName": "cuerosvelezco",
+                                "kitItemDetails": []
+                            }
+                        ],
+                        "shippingEstimateDate": "2024-02-05T23:25:06.4163070+00:00"
+                    },
+                    {
+                        "id": "VZ ZONA 2",
+                        "name": "VZ ZONA 2",
+                        "shippingEstimate": "3bd",
+                        "deliveryWindow": null,
+                        "availableDeliveryWindows": [],
+                        "price": 772200,
+                        "listPrice": 772200,
+                        "deliveryChannel": "delivery",
+                        "pickupStoreInfo": {
+                            "additionalInfo": null,
+                            "address": null,
+                            "dockId": null,
+                            "friendlyName": null,
+                            "isPickupStore": false
+                        },
+                        "polygonName": "",
+                        "lockTTL": "12d",
+                        "pickupPointId": null,
+                        "transitTime": "1bd",
+                        "pickupDistance": 0.0,
+                        "deliveryIds": [
+                            {
+                                "courierId": "Zona_Cali",
+                                "courierName": "Zona_Cali",
+                                "dockId": "5332_TERRAPLAZA",
+                                "quantity": 1,
+                                "warehouseId": "5332_0022_TERRAPLAZA",
+                                "accountCarrierName": "cuerosvelezco",
+                                "kitItemDetails": []
+                            }
+                        ],
+                        "shippingEstimateDate": null
+                    },
+                    {
+                        "id": "VZ ZONA 5",
+                        "name": "VZ ZONA 5",
+                        "shippingEstimate": "3bd",
+                        "deliveryWindow": null,
+                        "availableDeliveryWindows": [],
+                        "price": 772200,
+                        "listPrice": 772200,
+                        "deliveryChannel": "delivery",
+                        "pickupStoreInfo": {
+                            "additionalInfo": null,
+                            "address": null,
+                            "dockId": null,
+                            "friendlyName": null,
+                            "isPickupStore": false
+                        },
+                        "polygonName": "",
+                        "lockTTL": "12d",
+                        "pickupPointId": null,
+                        "transitTime": "1bd",
+                        "pickupDistance": 0.0,
+                        "deliveryIds": [
+                            {
+                                "courierId": "Zona_Santander",
+                                "courierName": "Zona_Santander",
+                                "dockId": "5070_CANAVERAL",
+                                "quantity": 1,
+                                "warehouseId": "5070_CANAVERAL",
+                                "accountCarrierName": "cuerosvelezco",
+                                "kitItemDetails": []
+                            }
+                        ],
+                        "shippingEstimateDate": null
+                    },
+                    {
+                        "id": "VZ ZONA 4",
+                        "name": "VZ ZONA 4",
+                        "shippingEstimate": "4bd",
+                        "deliveryWindow": null,
+                        "availableDeliveryWindows": [],
+                        "price": 772200,
+                        "listPrice": 772200,
+                        "deliveryChannel": "delivery",
+                        "pickupStoreInfo": {
+                            "additionalInfo": null,
+                            "address": null,
+                            "dockId": null,
+                            "friendlyName": null,
+                            "isPickupStore": false
+                        },
+                        "polygonName": "",
+                        "lockTTL": "12d",
+                        "pickupPointId": null,
+                        "transitTime": "1bd",
+                        "pickupDistance": 0.0,
+                        "deliveryIds": [
+                            {
+                                "courierId": "Zona_Medellin",
+                                "courierName": "Zona_Medellin",
+                                "dockId": "5035_LA65",
+                                "quantity": 1,
+                                "warehouseId": "5035_0022_LA65",
+                                "accountCarrierName": "cuerosvelezco",
+                                "kitItemDetails": []
+                            }
+                        ],
+                        "shippingEstimateDate": null
+                    },
+                    {
+                        "id": "VZ ZONA 3",
+                        "name": "VZ ZONA 3",
+                        "shippingEstimate": "5bd",
+                        "deliveryWindow": null,
+                        "availableDeliveryWindows": [],
+                        "price": 772200,
+                        "listPrice": 772200,
+                        "deliveryChannel": "delivery",
+                        "pickupStoreInfo": {
+                            "additionalInfo": null,
+                            "address": null,
+                            "dockId": null,
+                            "friendlyName": null,
+                            "isPickupStore": false
+                        },
+                        "polygonName": "",
+                        "lockTTL": "12d",
+                        "pickupPointId": null,
+                        "transitTime": "2bd",
+                        "pickupDistance": 0.0,
+                        "deliveryIds": [
+                            {
+                                "courierId": "Zona_costanorte",
+                                "courierName": "Zona_costanorte",
+                                "dockId": "5330_NATLANTICO",
+                                "quantity": 1,
+                                "warehouseId": "5330_0022_NATLANTICO",
+                                "accountCarrierName": "cuerosvelezco",
+                                "kitItemDetails": []
+                            }
+                        ],
+                        "shippingEstimateDate": null
+                    },
+                    {
+                        "id": "Pickup UN (VUPP_001)",
+                        "name": "Pickup UN (VUPP_001)",
+                        "shippingEstimate": "4h",
+                        "deliveryWindow": null,
+                        "availableDeliveryWindows": [],
+                        "price": 0,
+                        "listPrice": 0,
+                        "deliveryChannel": "pickup-in-point",
+                        "pickupStoreInfo": {
+                            "additionalInfo": "Si tu pedido fue realizado entre las 10:00 a.m. y las 4:00 p.m. nuestra promesa de entrega es de 4 horas el mismo día en que realizaste tu compra. Ten presente que, si tu compra fue realizada por fuera de dicho horario, tu pedido se entregará a partir de las 2:00 p.m. del día siguiente. El horario de nuestras tiendas es de lunes a domingo entre las 11:00 a.m. y 8:00 p.m. Aplica todos los días de la semana incluyendo domingos y festivos. Recuerda presentarte en la tienda seleccionada con el documento de identidad físico.",
+                            "address": {
+                                "addressType": "pickup",
+                                "receiverName": null,
+                                "addressId": "VUPP_001",
+                                "versionId": null,
+                                "entityId": null,
+                                "postalCode": "11001",
+                                "city": "Bogotá, D.c.",
+                                "state": "Bogotá, D.C.",
+                                "country": "COL",
+                                "street": "Cra. 15 #124-30",
+                                "number": "124-30",
+                                "neighborhood": "Usaquén",
+                                "complement": null,
+                                "reference": null,
+                                "geoCoordinates": [
+                                    -74.04197,
+                                    4.702277
+                                ]
+                            },
+                            "dockId": "5057_UNICENTRO_BOGOTA",
+                            "friendlyName": "VÉLEZ UNICENTRO",
+                            "isPickupStore": true
+                        },
+                        "polygonName": "",
+                        "lockTTL": "12d",
+                        "pickupPointId": "1_VUPP_001",
+                        "transitTime": "4h",
+                        "pickupDistance": 3.475628614425659,
+                        "deliveryIds": [
+                            {
+                                "courierId": "Pickup_002",
+                                "courierName": "Recogida en tienda Unicentro",
+                                "dockId": "5057_UNICENTRO_BOGOTA",
+                                "quantity": 1,
+                                "warehouseId": "5057_UNICENTRO_BOG",
+                                "accountCarrierName": "cuerosvelezco",
+                                "kitItemDetails": []
+                            }
+                        ],
+                        "shippingEstimateDate": null
+                    }
+                ],
+                "shipsTo": [
+                    "COL"
+                ],
+                "deliveryIds": [
+                    {
+                        "courierId": "Zona_Bogota",
+                        "courierName": "Zona_Bogota",
+                        "dockId": "5275_AQUAIBAGUE",
+                        "quantity": 1,
+                        "warehouseId": "5275_AQUAIBAGUE",
+                        "accountCarrierName": "cuerosvelezco",
+                        "kitItemDetails": []
+                    }
+                ],
+                "deliveryChannels": [
+                    {
+                        "id": "pickup-in-point",
+                        "stockBalance": 0
+                    },
+                    {
+                        "id": "delivery",
+                        "stockBalance": 0
+                    }
+                ],
+                "deliveryChannel": "delivery",
+                "pickupStoreInfo": {
+                    "additionalInfo": null,
+                    "address": null,
+                    "dockId": null,
+                    "friendlyName": null,
+                    "isPickupStore": false
+                },
+                "addressId": "8533716239475",
+                "versionId": null,
+                "entityId": null,
+                "polygonName": "",
+                "pickupPointId": null,
+                "transitTime": "1bd"
+            }
+        ],
+        "trackingHints": null,
+        "selectedAddresses": [
+            {
+                "addressType": "residential",
+                "receiverName": "JOHANNA MURILLO FORERO",
+                "addressId": "8533716239475",
+                "versionId": null,
+                "entityId": null,
+                "postalCode": "11001",
+                "city": "Bogotá, D.c.",
+                "state": "Bogotá, D.C.",
+                "country": "COL",
+                "street": "CALLE 67B SUR #13-60",
+                "number": null,
+                "neighborhood": "Portal Usme",
+                "complement": "TORRE 4 APTO 901",
+                "reference": null,
+                "geoCoordinates": [
+                    -74.07209014892578,
+                    4.710988521575928
+                ]
+            }
+        ],
+        "availableAddresses": [
+            {
+                "addressType": "residential",
+                "receiverName": "JOHANNA MURILLO FORERO",
+                "addressId": "8533716239475",
+                "versionId": null,
+                "entityId": null,
+                "postalCode": "11001",
+                "city": "Bogotá, D.c.",
+                "state": "Bogotá, D.C.",
+                "country": "COL",
+                "street": "CALLE 67B SUR #13-60",
+                "number": null,
+                "neighborhood": "Portal Usme",
+                "complement": "TORRE 4 APTO 901",
+                "reference": null,
+                "geoCoordinates": [
+                    -74.07209014892578,
+                    4.710988521575928
+                ]
+            }
+        ],
+        "contactInformation": []
+    },
+    "ratesAndBenefitsData": {
+        "id": "ratesAndBenefitsData",
+        "rateAndBenefitsIdentifiers": [
+            {
+                "description": null,
+                "featured": false,
+                "id": "4381ad77-1771-46f7-9610-6e4d3c148bde",
+                "name": "30OFF AON V.2",
+                "matchedParameters": {
+                    "productCluster@CatalogSystem": "820|inclusive"
+                },
+                "additionalInfo": null
+            }
+        ]
+    },
+    "marketingData": {
+        "id": "marketingData",
+        "utmSource": "google",
+        "utmPartner": null,
+        "utmMedium": "cpc",
+        "utmCampaign": "VELEZ_CO_GO-PMAX_PERF_CPC_AON_OFERTAS_",
+        "coupon": null,
+        "utmiCampaign": "",
+        "utmipage": "",
+        "utmiPart": "",
+        "marketingTags": []
+    },
+    "giftRegistryData": null,
+    "clientProfileData": {
+        "id": "clientProfileData",
+        "email": "johamur920@gmail.com-240000207816b.ct.vtex.com.br",
+        "firstName": "JOHANNA ",
+        "lastName": "MURILLO FORERO",
+        "documentType": "cedulaCOL",
+        "document": "53046682",
+        "phone": "+573134331431",
+        "corporateName": null,
+        "tradeName": null,
+        "corporateDocument": null,
+        "stateInscription": "",
+        "corporatePhone": null,
+        "isCorporate": false,
+        "userProfileId": "3f4e48c5-d113-4044-8e01-5e0a3d3608f8",
+        "userProfileVersion": null,
+        "customerClass": null,
+        "customerCode": null
+    },
+    "items": [
+        {
+            "uniqueId": "FDECC8ED0FF743A68379DEE6AD49E6A2",
+            "id": "781",
+            "productId": "175",
+            "ean": "7706352150136",
+            "lockId": "00-1407433233021-01",
+            "itemAttachment": {
+                "content": {},
+                "name": null
+            },
+            "attachments": [],
+            "quantity": 1,
+            "seller": "1",
+            "name": "Billetera de cuero Creta vertical Cafe",
+            "refId": "101963511",
+            "price": 15990000,
+            "listPrice": 15990000,
+            "manualPrice": null,
+            "manualPriceAppliedBy": null,
+            "priceTags": [
+                {
+                    "name": "DISCOUNT@MARKETPLACE",
+                    "value": -4797000,
+                    "isPercentual": false,
+                    "identifier": "4381ad77-1771-46f7-9610-6e4d3c148bde",
+                    "rawValue": -47970.0,
+                    "rate": null,
+                    "jurisCode": null,
+                    "jurisType": null,
+                    "jurisName": null
+                }
+            ],
+            "imageUrl": "https://cuerosvelezco.vteximg.com.br/arquivos/ids/218755-450-675/1019635-11-01-billetera-de-cuero.jpg?v=637648103376400000",
+            "detailUrl": "/billetera-1019635-11/p",
+            "components": [],
+            "bundleItems": [],
+            "params": [],
+            "offerings": [],
+            "attachmentOfferings": [],
+            "sellerSku": "781",
+            "priceValidUntil": "2025-01-31T23:20:22.0000000+00:00",
+            "commission": 0,
+            "tax": 0,
+            "preSaleDate": null,
+            "additionalInfo": {
+                "brandName": "Vélez",
+                "brandId": "2000000",
+                "categoriesIds": "/2/7/38/",
+                "categories": [
+                    {
+                        "id": 38,
+                        "name": "billeteras"
+                    },
+                    {
+                        "id": 7,
+                        "name": "accesorios"
+                    },
+                    {
+                        "id": 2,
+                        "name": "hombre"
+                    }
+                ],
+                "productClusterId": "146,163,164,178,191,320,488,518,558,559,580,593,630,640,775,815,820,840,897,898,901,914,918,923",
+                "commercialConditionId": "1",
+                "dimension": {
+                    "cubicweight": 0.1029,
+                    "height": 4.0,
+                    "length": 13.0,
+                    "weight": 110.0,
+                    "width": 9.5
+                },
+                "offeringInfo": null,
+                "offeringType": null,
+                "offeringTypeId": null
+            },
+            "measurementUnit": "un",
+            "unitMultiplier": 1.0,
+            "sellingPrice": 11193000,
+            "isGift": false,
+            "shippingPrice": null,
+            "rewardValue": 0,
+            "freightCommission": 0,
+            "priceDefinition": {
+                "sellingPrices": [
+                    {
+                        "value": 11193000,
+                        "quantity": 1
+                    }
+                ],
+                "calculatedSellingPrice": 11193000,
+                "total": 11193000,
+                "reason": null
+            },
+            "taxCode": "",
+            "parentItemIndex": null,
+            "parentAssemblyBinding": null,
+            "callCenterOperator": null,
+            "serialNumbers": null,
+            "assemblies": [],
+            "costPrice": 15990000
+        }
+    ],
+    "marketplaceItems": [],
+    "cancellationRequests": null,
+    "approvedBy": null,
+    "cancelledBy": null,
+    "purchaseAgentData": null,
+    "pendingData": null,
+    "creationEnvironment": "STABLE"
+}

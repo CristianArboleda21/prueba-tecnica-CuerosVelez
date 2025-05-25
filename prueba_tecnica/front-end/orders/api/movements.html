@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Movimientos de Órdenes</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f7f7f7; margin: 0; padding: 0; }
+        .container { max-width: 1100px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px #ccc; }
+        h1 { text-align: center; color: #333; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 30px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background: #f0f0f0; }
+        tr:nth-child(even) { background: #f9f9f9; }
+        .loading, .error { text-align: center; color: #888; margin: 20px 0; }
+        button { border-radius: 4px; cursor: pointer; margin-bottom: 1rem; background: #4CAF50; color: white; border: none; padding: 8px 16px; font-size: 1em; }
+        button:hover { background: #45a049; }
+        /* Modal styles */
+        .modal { display: none; position: fixed; z-index: 10; left: 0; top: 0; width: 100vw; height: 100vh; overflow: auto; background: rgba(0,0,0,0.4); }
+        .modal-content { background: #fff; margin: 5% auto; padding: 20px; border-radius: 8px; width: 90%; max-width: 600px; position: relative; }
+        .close { color: #aaa; position: absolute; top: 10px; right: 20px; font-size: 28px; font-weight: bold; cursor: pointer; }
+        .close:hover { color: #333; }
+        ul { padding-left: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Movimientos de Órdenes</h1>
+        <button onclick="fetchMovements()">Cargar Movimientos</button>
+        <div id="movementsContainer"></div>
+    </div>
+
+    <!-- Modal para detalle de orden -->
+    <div id="detailModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:8000/api/orders';
+
+        async function fetchMovements() {
+            const container = document.getElementById('movementsContainer');
+            container.innerHTML = '<div class="loading">Cargando movimientos...</div>';
+            try {
+                const res = await fetch(`${API_URL}/movements/`);
+                if (!res.ok) {
+                    const text = await res.text();
+                    throw new Error(text);
+                }
+                const data = await res.json();
+                container.innerHTML = '';
+
+                if (!Array.isArray(data) || data.length === 0) {
+                    container.innerHTML = '<div class="loading">No hay movimientos para mostrar.</div>';
+                    return;
+                }
+
+                let html = `<table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Fecha</th>
+                            <th>Origen</th>
+                            <th>Destino</th>
+                            <th>Descuento</th>
+                            <th>Envío</th>
+                            <th>Total</th>
+                            <th>Productos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                `;
+                data.forEach(item => {
+                    html += `<tr>
+                        <td>${item.id}</td>
+                        <td>${item.date || ''}</td>
+                        <td>${item.origin_id_id && item.origin_id_id.sla ? item.origin_id_id.sla : 'N/A'}</td>
+                        <td>${item.destination_id_id && item.destination_id_id.city ? item.destination_id_id.city : 'N/A'}</td>
+                        <td>${item.discount || 0}</td>
+                        <td>${item.shipping || 0}</td>
+                        <td>${item.total || 0}</td>
+                        <td><button onclick="getOrderDetail(${item.id})">Productos</button></td>
+                    </tr>`;
+                });
+                html += `</tbody></table>`;
+                container.innerHTML = html;
+
+            } catch (err) {
+                container.innerHTML = '<div class="error">Error al obtener movimientos.</div>';
+                console.error(err);
+            }
+        }
+
+        async function getOrderDetail(id) {
+            try {
+                const res = await fetch(`${API_URL}/${id}/detail_order/`);
+                if (!res.ok) {
+                    const text = await res.text();
+                    throw new Error(text);
+                }
+                const data = await res.json();
+                console.log(data);
+
+                const modalContent = document.getElementById('modalContent');
+                if (data.error) {
+                    modalContent.innerHTML = `<p>Error: ${data.error}</p>`;
+                } else {
+                    let html = `<h2>Productos de la Orden</h2>`;
+                    (data.product_id_id || []).forEach(prod => {
+                        html += `<li>${prod.name} - Precio: ${prod.price} - Cantidad: ${prod.quantity}</li>`;
+                    });
+                    html += `</ul>`;
+                    modalContent.innerHTML = html;
+                }
+                document.getElementById('detailModal').style.display = 'block';
+            } catch (err) {
+                document.getElementById('modalContent').innerHTML = '<p class="error">Error al obtener detalle de la orden.</p>';
+                document.getElementById('detailModal').style.display = 'block';
+                console.error(err);
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('detailModal').style.display = 'none';
+        }
+
+        // Opcional: cerrar modal al hacer clic fuera del contenido
+        window.onclick = function(event) {
+            const modal = document.getElementById('detailModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
